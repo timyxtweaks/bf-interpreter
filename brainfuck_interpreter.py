@@ -1,14 +1,13 @@
 #!/usr/bin/env python3
 # -*- coding: utf-8 -*-
 """
-Brainfuck Interpreter - ovo je interpreter za brainfuck jezik
+Brainfuck Interpreter
 Autor: timyx
-Sve na bosanskom jeziku jer tako treba
 """
 
 def pronadji_odgovarajucu_zagradu(kod, pozicija, smer):
     """
-    Traži odgovarajuću zagradu u kodu
+    Trazi odgovarajucu zagradu u kodu
     """
     brojac = 0
     i = pozicija
@@ -28,7 +27,7 @@ def pronadji_odgovarajucu_zagradu(kod, pozicija, smer):
 
 def pokreni_kod(brainfuck_kod):
     """
-    Ova funkcija pokreće brainfuck kod
+    Ova funkcija pokrece brainfuck kod
     """
     memorija = [0] * 30000
     memorijski_pokazivac = 0
@@ -73,13 +72,13 @@ def pokreni_kod(brainfuck_kod):
             elif komanda == '>':
                 memorijski_pokazivac += 1
                 if memorijski_pokazivac >= 30000:
-                    print("Memorijski pokazivač je van granica!")
+                    print("Memorijski pokazivac je van granica!")
                     return False
                     
             elif komanda == '<':
                 memorijski_pokazivac -= 1
                 if memorijski_pokazivac < 0:
-                    print("Memorijski pokazivač je van granica!")
+                    print("Memorijski pokazivac je van granica!")
                     return False
                     
             elif komanda == '.':
@@ -100,7 +99,7 @@ def pokreni_kod(brainfuck_kod):
                 if memorija[memorijski_pokazivac] == 0:
                     nova_pozicija = pronadji_odgovarajucu_zagradu(ociscen_kod, kod_pokazivac, 1)
                     if nova_pozicija == -1:
-                        print("Nije pronađena zatvarajuća zagrada ]!")
+                        print("Nije pronadjena zatvarajuca zagrada ]!")
                         return False
                     kod_pokazivac = nova_pozicija
                     
@@ -108,7 +107,7 @@ def pokreni_kod(brainfuck_kod):
                 if memorija[memorijski_pokazivac] != 0:
                     nova_pozicija = pronadji_odgovarajucu_zagradu(ociscen_kod, kod_pokazivac, -1)
                     if nova_pozicija == -1:
-                        print("Nije pronađena otvarajuća zagrada [!")
+                        print("Nije pronadjena otvarajuca zagrada [!")
                         return False
                     kod_pokazivac = nova_pozicija
             
@@ -118,10 +117,10 @@ def pokreni_kod(brainfuck_kod):
         print("\nProgram prekinut od strane korisnika.")
         return False
     except Exception as e:
-        print(f"Neočekivana greška: {e}")
+        print(f"Neocekivana greska: {e}")
         return False
     
-    print("\nProgram završen!")
+    print("\nProgram zavrsen!")
     return True
 
 def glavni_meni():
@@ -135,7 +134,7 @@ def glavni_meni():
     while True:
         print("\nOpcije:")
         print("1. Unesi brainfuck kod")
-        print("2. Izađi")
+        print("2. Izadji")
         
         izbor = input("Izbor (1-2): ").strip()
         
